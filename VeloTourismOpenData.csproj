@@ -6,9 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Model\" />
     <Folder Include="Control\" />
-    <Folder Include="OpenDataModel\" />
   </ItemGroup>
 
 </Project>
