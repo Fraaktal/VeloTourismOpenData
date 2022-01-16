@@ -1,4 +1,5 @@
 ﻿using System;
+using VeloTourismOpenData.Control;
 
 namespace VeloTourismOpenData
 {
@@ -6,7 +7,9 @@ namespace VeloTourismOpenData
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            string pistesPath = "C:\\Users\\trava\\OneDrive\\Bureau\\DATA\\reseau-cyclable.json";
+            PisteParser parser = new PisteParser();
+            var pistes = parser.Parse(pistesPath);
         }
     }
 }

@@ -4,7 +4,8 @@ using System.Text;
 
 namespace VeloTourismOpenData.Model
 {
-    public class TouristicTrack
+    public class GeoShape
     {
+        public decimal[][] Coordinates { get; set; }
     }
 }

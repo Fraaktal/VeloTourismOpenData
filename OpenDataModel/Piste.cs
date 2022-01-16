@@ -1,10 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
+using VeloTourismOpenData.Model;
 
 namespace VeloTourismOpenData.OpenDataModel
 {
-    class Piste
+    public class Record
+    {
+        public Piste fields { get; set; }
+    }
+    
+    public class Piste
     {
         public string typologie_simple { get; set; }
         public string bidirectionnel { get; set; }
@@ -22,7 +26,7 @@ namespace VeloTourismOpenData.OpenDataModel
         public string type_continuite { get; set; }
         public string reseau { get; set; }
         public DateTime date_de_livraison { get; set; }
-        public string geo_shape { get; set; } // (geo_shape)
-        public string geo_point_2d { get; set; } // (geo_point_2d)
+        public GeoShape geo_shape { get; set; } // (geo_shape)
+        public decimal[] geo_point_2d { get; set; } // (geo_point_2d)
     }
 }
