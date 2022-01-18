@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
@@ -6,10 +6,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="SourceDatasets\reseau-cyclable.json" />
     <None Remove="SourceDatasets\velib_a_paris_et_communes_limitrophes.json" />
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Include="SourceDatasets\reseau-cyclable.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
     <EmbeddedResource Include="SourceDatasets\velib_a_paris_et_communes_limitrophes.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
@@ -18,6 +22,10 @@
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
     <PackageReference Include="System.Device.Location.Portable" Version="1.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="SourceDatasets\reseau-cyclable.json" />
   </ItemGroup>
 
 </Project>
