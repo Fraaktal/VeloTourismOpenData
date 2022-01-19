@@ -7,6 +7,5 @@ namespace VeloTourismOpenData.Model
         public string Name { get; set; }
         public GeoCoordinate Localization { get; set; } 
         public string Address { get; set; }
-
     }
 }

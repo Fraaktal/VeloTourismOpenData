@@ -14,6 +14,10 @@ namespace VeloTourismOpenData
             string pistesPath = @"SourceDatasets/reseau-cyclable.json";
             PisteParser parser = new PisteParser();
             var pistes = parser.Parse(pistesPath);
+
+            string monumentListPath = "C:/Users/leoni/Source/Repos/VeloTourismOpenData/SourceDatasets/commission-du-vieux-paris-adresses-instruites.json";
+            MonumentParser monumentParser = new MonumentParser();
+            var monumentList = monumentParser.Parse(monumentListPath);
         }
     }
 }
