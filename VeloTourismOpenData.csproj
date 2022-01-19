@@ -6,11 +6,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="SourceDatasets\commission-du-vieux-paris-adresses-instruites.json" />
     <None Remove="SourceDatasets\reseau-cyclable.json" />
     <None Remove="SourceDatasets\velib_a_paris_et_communes_limitrophes.json" />
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Include="SourceDatasets\commission-du-vieux-paris-adresses-instruites.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
     <EmbeddedResource Include="SourceDatasets\reseau-cyclable.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>

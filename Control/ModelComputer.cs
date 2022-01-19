@@ -7,7 +7,7 @@ namespace VeloTourismOpenData.Control
 {
     public class ModelComputer
     {
-        public List<TouristicTrack> ComputeNearVelibAndMonuments(List<TouristicTrack> tracks, List<Velib> velibs, int radius)
+        public List<TouristicTrack> ComputeNearVelibAndMonuments(List<TouristicTrack> tracks, List<Velib> velibs, List<Monument> monuments, int radius)
         {
             foreach (var track in tracks)
             {
@@ -24,14 +24,14 @@ namespace VeloTourismOpenData.Control
                             }
                         }
 
-                        //foreach (var monument in monuments)
-                        //{
-                        //    if (DistanceCalculator.Distance(coords[0], coords[1], monument.Localization.Coordinate[0],
-                        //        monument.Localization.Coordinate[1]) < radius)
-                        //    {
-                        //        track.NearMonuments.Add(monument);
-                        //    }
-                        //}
+                        foreach (var monument in monuments)
+                        {
+                            if (DistanceCalculator.Distance(coords[1], coords[0], monument.Localization.Coordinate[0],
+                                monument.Localization.Coordinate[1]) < radius)
+                            {
+                                track.NearMonuments.Add(monument);
+                            }
+                        }
                     }
                 }
             }

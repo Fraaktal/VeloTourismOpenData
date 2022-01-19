@@ -1,4 +1,6 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.IO;
+using Newtonsoft.Json;
 using VeloTourismOpenData.Control;
 using VeloTourismOpenData.Parser;
 
@@ -16,12 +18,28 @@ namespace VeloTourismOpenData
             PisteParser parser = new PisteParser();
             var pistes = parser.Parse(pistesPath);
 
-            string monumentListPath = "C:/Users/leoni/Source/Repos/VeloTourismOpenData/SourceDatasets/commission-du-vieux-paris-adresses-instruites.json";
+            string monumentListPath = @"SourceDatasets/commission-du-vieux-paris-adresses-instruites.json";
             MonumentParser monumentParser = new MonumentParser();
             var monumentList = monumentParser.Parse(monumentListPath);
 
             ModelComputer computer = new ModelComputer();
-            var res = computer.ComputeNearVelibAndMonuments(pistes, listOfVelib, 50);
+            var res = computer.ComputeNearVelibAndMonuments(pistes, listOfVelib, monumentList, 50);
+
+            string path = $"C:\\Users\\trava\\OneDrive\\Bureau\\result.json";
+
+            if (File.Exists(path))
+            {
+                File.Delete(path);
+            }
+
+            List<string> parsedData = new List<string>();
+
+            foreach (var touristicTrack in res)
+            {
+                parsedData.Add(JsonConvert.SerializeObject(touristicTrack));
+            }
+
+            File.AppendAllLines(path, parsedData);
         }
     }
 }

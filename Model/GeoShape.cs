@@ -11,6 +11,6 @@ namespace VeloTourismOpenData.Model
             Coordinates = coords;
         }
 
-    public double[][] Coordinates { get; set; }
+        public double[][] Coordinates { get; set; }
     }
 }

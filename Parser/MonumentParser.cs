@@ -29,7 +29,7 @@ namespace VeloTourismOpenData.Parser
             {
                 Monument track = new Monument()
                 {
-                    Localization = monumentModel.geometry,
+                    Localization = new GeoPoint(monumentModel.geo_point_2d[0], monumentModel.geo_point_2d[1]),
                     Name = monumentModel.designation,
                     ConstructionDate = monumentModel.siecle_de_construction,
                     Description = monumentModel.voeu

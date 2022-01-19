@@ -36,6 +36,7 @@ namespace VeloTourismOpenData.Parser
                 {
                     Geo_shape = piste.geo_shape,
                     NearVelibs = new List<Velib>(),
+                    NearMonuments = new List<Monument>(),
                     Length_in_meters = (int)piste.length
                 };
 

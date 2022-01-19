@@ -7,6 +7,6 @@ namespace VeloTourismOpenData.Model
         public int Length_in_meters { get; set; }
         public GeoShape Geo_shape { get; set; }
         public List<Velib> NearVelibs { get; set; }
-        //public List<Monument> NearMonuments { get; set; }
+        public List<Monument> NearMonuments { get; set; }
     }
 }
