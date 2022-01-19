@@ -16,6 +16,10 @@ namespace VeloTourismOpenData
             PisteParser parser = new PisteParser();
             var pistes = parser.Parse(pistesPath);
 
+            string monumentListPath = "C:/Users/leoni/Source/Repos/VeloTourismOpenData/SourceDatasets/commission-du-vieux-paris-adresses-instruites.json";
+            MonumentParser monumentParser = new MonumentParser();
+            var monumentList = monumentParser.Parse(monumentListPath);
+
             ModelComputer computer = new ModelComputer();
             var res = computer.ComputeNearVelibAndMonuments(pistes, listOfVelib, 50);
         }
