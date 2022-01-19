@@ -4,12 +4,12 @@
     {
         public GeoPoint(double x, double y)
         {
-            Coordinate = new decimal[2];
+            Coordinate = new double[2];
 
-            Coordinate[0] = (decimal)x;
-            Coordinate[1] = (decimal)y;
+            Coordinate[0] = x;
+            Coordinate[1] = y;
         }
 
-        public decimal[] Coordinate { get; set; }
+        public double[] Coordinate { get; set; }
     }
 }

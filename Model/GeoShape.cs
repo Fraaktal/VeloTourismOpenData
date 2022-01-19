@@ -6,11 +6,11 @@ namespace VeloTourismOpenData.Model
 {
     public class GeoShape
     {
-        public GeoShape(decimal[][] coords)
+        public GeoShape(double[][] coords)
         {
             Coordinates = coords;
         }
 
-    public decimal[][] Coordinates { get; set; }
+    public double[][] Coordinates { get; set; }
     }
 }

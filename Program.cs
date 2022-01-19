@@ -1,4 +1,5 @@
-﻿using VeloTourismOpenData.Parser;
+﻿using VeloTourismOpenData.Control;
+using VeloTourismOpenData.Parser;
 
 namespace VeloTourismOpenData
 {
@@ -13,6 +14,9 @@ namespace VeloTourismOpenData
             string pistesPath = @"SourceDatasets/reseau-cyclable.json";
             PisteParser parser = new PisteParser();
             var pistes = parser.Parse(pistesPath);
+
+            ModelComputer computer = new ModelComputer();
+            computer.ComputeNearVelibAndMonuments(pistes, listOfVelib, 50);
         }
     }
 }
