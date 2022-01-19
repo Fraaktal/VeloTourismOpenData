@@ -1,11 +1,8 @@
 ﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using System;
 using System.Collections.Generic;
-using System.Device.Location;
 using System.IO;
 using System.Linq;
-using System.Text;
 using VeloTourismOpenData.Model;
 
 namespace VeloTourismOpenData.Parser
@@ -24,7 +21,7 @@ namespace VeloTourismOpenData.Parser
                 {
                     Name = (string)vel["fields"]["name"],
                     Address = (string)vel["fields"]["address"],
-                    Localization = new GeoCoordinate((double)vel["fields"]["latitude"], (double)vel["fields"]["longitude"])
+                    Localization = new GeoPoint((double)vel["fields"]["latitude"], (double)vel["fields"]["longitude"])
                 }).ToList();
             }
 

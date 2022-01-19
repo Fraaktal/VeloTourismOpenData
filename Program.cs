@@ -1,5 +1,4 @@
-﻿using System;
-using VeloTourismOpenData.Parser;
+﻿using VeloTourismOpenData.Parser;
 
 namespace VeloTourismOpenData
 {
