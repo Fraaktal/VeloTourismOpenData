@@ -25,7 +25,7 @@ namespace VeloTourismOpenData
             ModelComputer computer = new ModelComputer();
             var res = computer.ComputeNearVelibAndMonuments(pistes, listOfVelib, monumentList, 50);
 
-            string path = $"C:\\Users\\trava\\OneDrive\\Bureau\\result.json";
+            string path = $"C:\\Users\\trava\\OneDrive\\Bureau\\DATA\\result.json";
 
             if (File.Exists(path))
             {
@@ -40,6 +40,24 @@ namespace VeloTourismOpenData
             }
 
             File.AppendAllLines(path, parsedData);
+
+            var res2 = computer.ComputeTouristicTracks(res, 7000);
+
+            string path2 = $"C:\\Users\\trava\\OneDrive\\Bureau\\DATA\\result2.json";
+
+            if (File.Exists(path2))
+            {
+                File.Delete(path2);
+            }
+
+            List<string> parsedData2 = new List<string>();
+
+            foreach (var touristicTrack in res2)
+            {
+                parsedData2.Add(JsonConvert.SerializeObject(touristicTrack));
+            }
+
+            File.AppendAllLines(path2, parsedData2);
         }
     }
 }
