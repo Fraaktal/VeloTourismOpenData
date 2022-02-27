@@ -4,6 +4,7 @@ namespace VeloTourismOpenData.Control
 {
     public static class DistanceCalculator
     {
+        //Calcule la distance en m entre deux positions géographiques
         public static double Distance(double latA, double longA, double latB, double longB)
         {
             var d1 = latA * (Math.PI / 180.0);

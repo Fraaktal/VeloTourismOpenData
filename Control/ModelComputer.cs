@@ -1,21 +1,21 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
-using System.Text;
 using VeloTourismOpenData.Model;
 
 namespace VeloTourismOpenData.Control
 {
     public class ModelComputer
     {
+        //Compute les datasets pour créer nos données
         public List<TouristicTrack> ComputeNearVelibAndMonuments(List<TouristicTrack> tracks, List<Velib> velibs, List<Monument> monuments, int radius)
         {
+            //On parcours chacune des pistes
             foreach (var track in tracks)
             {
                 if (track?.Geo_shape != null)
                 {
+                    //Pour chacune des coords, on récupère les monuments et stations de vélibs dans un rayons de x mètres
                     foreach (var coords in track.Geo_shape.Coordinates)
                     {
                         foreach (var velib in velibs)
@@ -42,11 +42,13 @@ namespace VeloTourismOpenData.Control
             return tracks;
         }
 
+        //On calcule des circuits
         public List<TouristicCircuit> ComputeTouristicTracks(List<TouristicTrack> touristicTracks, int maxLength)
         {
             List<TouristicCircuit> result = new List<TouristicCircuit>();
 
-            result.AddRange(ComputeCircuit(touristicTracks, 5000, 60));
+            //On cherche 60 circuits
+            result.AddRange(ComputeCircuit(touristicTracks, maxLength, 60));
 
             return result;
         }
@@ -56,6 +58,7 @@ namespace VeloTourismOpenData.Control
             List<TouristicCircuit> res = new List<TouristicCircuit>();
             while (res.Count < count)
             {
+                //On inclut une composante aléatoire.
                 TouristicCircuit tmp = new TouristicCircuit();
                 TouristicTrack startingPoint = null;
                 Random r = new Random();
@@ -78,8 +81,10 @@ namespace VeloTourismOpenData.Control
                 tmp.MonumentsToVisit.AddRange(startingPoint.NearMonuments);
                 tmp.LengthInMeters = startingPoint.Length_in_meters;
 
+                //Tant qu'on peut ajouter des pistes, on le fait et on ajoute des monuments. Les pistes doivent se suivre.
                 while (canAddTrack)
                 {
+                    //On considère que deux pistes se suivent quand il y a moins de 10m entre deux pistes
                     var tracks = touristicTracks.Where(d => DistanceBetweenIsInferiorTo(d, lastTrack, 10)).ToList();
                     var monumentedTracks = tracks.Where(t => t.NearMonuments.Count > 0).ToList();
                     TouristicTrack nextTrack;
@@ -106,6 +111,7 @@ namespace VeloTourismOpenData.Control
                     }
                 }
 
+                //On ne valide un circuit que s'il y a au moins deux monuments à visiter
                 if(tmp.MonumentsToVisit.Count> 1)
                 {
                     string n1 = "";
